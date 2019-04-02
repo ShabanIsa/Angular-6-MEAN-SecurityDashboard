@@ -1,0 +1,20 @@
+<div>
+    <mat-card>
+  <div style="display: block">
+    <canvas baseChart 
+    [datasets]="barChartData" 
+    [labels]="barChartLabels" 
+    [options]="barChartOptions"
+    [legend]="barChartLegend" 
+    [chartType]="barChartType"></canvas>
+  </div>
+
+  <rg-gauge-chart
+    [canvasWidth]="canvasWidth"
+    [needleValue]="needleValue"
+    [centralLabel]="centralLabel"
+    [options]="options"
+    [name]="name"
+    [bottomLabel]="bottomLabel"></rg-gauge-chart>
+  </mat-card>
+</div>

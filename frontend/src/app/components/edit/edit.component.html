@@ -1,0 +1,45 @@
+<div>
+  <br>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Update Company</h3>
+    </section>
+    <mat-divider></mat-divider>
+    <br>
+    <form [formGroup]="updateForm" class="edit-form">
+      <mat-form-field class="field-full-width">
+        <input placeholder="Company name" matInput formControlName="companyName" #companyName>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <input placeholder="securityIndicator1" matInput formControlName="securityIndicator1" #securityIndicator1>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <textarea placeholder="securityIndicator2" matInput formControlName="securityIndicator2"
+          #securityIndicator2></textarea>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <mat-select placeholder="securityIndicator3" formControlName="securityIndicator3" #securityIndicator3>
+          <mat-option value="Low">Low</mat-option>
+          <mat-option value="Medium">Medium</mat-option>
+          <mat-option value="High">High</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="field-full-width">
+        <mat-select placeholder="securityIndicator4" formControlName="securityIndicator4" #securityIndicator4>
+          <mat-option value="Open">Open</mat-option>
+          <mat-option value="In Progress">In Progress</mat-option>
+          <mat-option value="Done">Done</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
+      <a routerLink="/list">
+      <button type="submit"
+        (click)="updateCompany(companyName.value, securityIndicator1.value, securityIndicator2.value, securityIndicator3.value, securityIndicator4.value)"
+        [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Save
+      </button></a>
+    </form>
+  </mat-card>
+</div>

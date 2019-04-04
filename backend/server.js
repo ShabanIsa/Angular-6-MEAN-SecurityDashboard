@@ -79,26 +79,6 @@ router.route('/companies/update/:id').post((req, res) =>{
             });
         }
     });
-
-    // Company.findById(req.param.id, (err, company) =>{
-    //     console.log(company);
-    //     if(!company){
-    //         return res.status(500).end();//next(new Error('Could not load Document'));
-    //     }else{
-    //         company.companyName = req.body.companyName;
-    //         company.securityIndicator1 = req.body.securityIndicator1;
-    //         company.securityIndicator2 = req.body.securityIndicator2;
-    //         company.securityIndicator3 = req.body.securityIndicator3;
-    //         company.securityIndicator4 = req.body.securityIndicator4;
-
-    //         company.save().then(company => {
-    //             res.json('Updated');
-    //         })
-    //         .catch(err => {
-    //             res.status(400).send('Update failed');
-    //         });
-    //     }
-    // });
 });
 
 router.route('/companies/delete/:id').get((req, res) => {

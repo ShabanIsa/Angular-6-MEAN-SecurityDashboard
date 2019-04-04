@@ -31,7 +31,6 @@ const routes: Routes = [
   {path: 'edit/:id', component: EditComponent },
   {path: 'list', component: ListComponent},
   {path: 'details/:id', component: DetailsComponent},
-  {path: 'gauge', component: GaugeChartComponent},
   {path: '', redirectTo: 'list', pathMatch:'full'}
 ];
 
@@ -57,13 +56,11 @@ const routes: Routes = [
     MatOptionModule,
     MatSelectModule,
     MatIconModule,
-    //IonicPageModule.forChild(DetailsComponent),
     MatButtonModule,
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule//,
-    //GoogleChartsModule.forRoot()
+    MatSnackBarModule
   ],
   providers: [CompanyService],
   bootstrap: [AppComponent]

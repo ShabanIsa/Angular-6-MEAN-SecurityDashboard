@@ -26,16 +26,12 @@ import { MatToolbarModule,
   MatDividerModule, 
   MatSnackBarModule } from '@angular/material';
 import { GaugesModule } from '@progress/kendo-angular-gauges';
-import { ProgressChartComponentComponent } from './components/progress-chart-component/progress-chart-component.component';
 import 'hammerjs';
-import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { InputsModule } from '@progress/kendo-angular-inputs';
 import { LabelModule } from '@progress/kendo-angular-label';
-import { ARCGaugeComponent } from './components/arcgauge/arcgauge.component';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import '@progress/kendo-angular-intl/locales/bg/all';
-import { JQueryChartComponent } from './components/j-query-chart/j-query-chart.component';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 
 
@@ -55,10 +51,7 @@ const routes: Routes = [
     CreateComponent,
     EditComponent,
     DetailsComponent,
-    GaugeChartComponent,
-    ProgressChartComponentComponent,
-    ARCGaugeComponent,
-    JQueryChartComponent
+    GaugeChartComponent
   ],
   imports: [
     FormsModule, 

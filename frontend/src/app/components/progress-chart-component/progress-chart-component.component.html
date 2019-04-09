@@ -1,9 +1,0 @@
-<div class="example-config">
-    <kendo-slider id="value" [min]="0" [max]="100" [smallStep]="10" [(ngModel)]="value"></kendo-slider>
-    <label for="value">Value</label>
-</div>
-<kendo-arcgauge [value]="value" [scale]="{ max: 100 }">
-    <ng-template kendoArcGaugeCenterTemplate let-value="value">
-        {{ value }}%
-    </ng-template>
-</kendo-arcgauge>

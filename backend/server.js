@@ -6,12 +6,8 @@ import Company from './models/Company';
 
 const app = express();
 const router = express.Router();
-//var corsOptions = {
-//    origin: '*',
-//    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-//  }
 
-app.use(cors(/*corsOptions*/));
+app.use(cors());
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/companies');
@@ -20,7 +16,6 @@ const connection = mongoose.connection;
 connection.once('open', ()=>{
     console.log('Mongo CONNECTED! ');
 });
-
 
 router.route('/companies').get((req, res) =>{
     Company.find((err, companies) => {

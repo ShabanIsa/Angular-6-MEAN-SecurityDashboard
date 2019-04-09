@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID} from '@angular/core';
 
 import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
@@ -24,14 +24,28 @@ import { MatToolbarModule,
   MatCardModule, 
   MatTableModule, 
   MatDividerModule, 
-  MatSnackBarModule } from '@angular/material';;
+  MatSnackBarModule } from '@angular/material';
+import { GaugesModule } from '@progress/kendo-angular-gauges';
+import { ProgressChartComponentComponent } from './components/progress-chart-component/progress-chart-component.component';
+import 'hammerjs';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { InputsModule } from '@progress/kendo-angular-inputs';
+import { LabelModule } from '@progress/kendo-angular-label';
+import { ARCGaugeComponent } from './components/arcgauge/arcgauge.component';
+import { IntlModule } from '@progress/kendo-angular-intl';
+import '@progress/kendo-angular-intl/locales/bg/all';
+import { JQueryChartComponent } from './components/j-query-chart/j-query-chart.component';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+
+
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent },
   {path: 'edit/:id', component: EditComponent },
   {path: 'list', component: ListComponent},
   {path: 'details/:id', component: DetailsComponent},
-  {path: '', redirectTo: 'list', pathMatch:'full'}
+  {path: '', redirectTo: 'list', pathMatch:'full'},
 ];
 
 @NgModule({
@@ -41,9 +55,15 @@ const routes: Routes = [
     CreateComponent,
     EditComponent,
     DetailsComponent,
-    GaugeChartComponent
+    GaugeChartComponent,
+    ProgressChartComponentComponent,
+    ARCGaugeComponent,
+    JQueryChartComponent
   ],
   imports: [
+    FormsModule, 
+    InputsModule, 
+    LabelModule,
     BrowserModule,
     ChartsModule,
     BrowserAnimationsModule,
@@ -60,7 +80,10 @@ const routes: Routes = [
     MatCardModule,
     MatTableModule,
     MatDividerModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    GaugesModule,
+    IntlModule,
+    DateInputsModule
   ],
   providers: [CompanyService],
   bootstrap: [AppComponent]

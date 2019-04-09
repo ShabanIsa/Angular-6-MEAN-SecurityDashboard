@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-sm-12 col-md-2">
+    <kendo-lineargauge [pointer]="{ value: value }" [scale]="{ labels: { format: 'c' } }">
+    </kendo-lineargauge>
+  </div>
+  <div class="col-sm-12 col-md-5">
+    <kendo-radialgauge [pointer]="{ value: value }" [scale]="{ labels: { format: 'c' } }">
+    </kendo-radialgauge>
+  </div>
+  <div class="col-sm-12 col-md-5">
+    <kendo-arcgauge [value]="value">
+      <kendo-arcgauge-scale [majorTicks]="{ visible: true }" [minorTicks]="{ visible: true }">
+        <kendo-arcgauge-scale-labels format="c">
+        </kendo-arcgauge-scale-labels>
+      </kendo-arcgauge-scale>
+      <ng-template kendoArcGaugeCenterTemplate let-value="value">
+        {{ value | kendoNumber: 'c' }}
+      </ng-template>
+    </kendo-arcgauge>
+  </div>
+</div>

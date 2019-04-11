@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import Company from './models/Company';
+import CompanyInfo from './models/CompanyInfo';
 
 const app = express();
 const router = express.Router();
@@ -28,6 +29,7 @@ router.route('/companies').get((req, res) =>{
         }
     });
 });
+
 router.route('/companies/:id').get((req, res) =>{
     Company.findById(req.params.id, (err, company) =>{
         if(err)
@@ -52,7 +54,33 @@ router.route('/companies/add').post((req, res) =>{
     });
 });
 
+router.route('/companyInfo/:id').get((req, res) =>{
+    CompanyInfo.findById(req.params.id, (err, companyInfo) =>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.json(companyInfo)
+        }
+    });
+});
+
+router.route('/companyInfo/add').post((req, res) =>{
+    console.log("Express /companyInfo/add")
+    let companyInfo = new CompanyInfo(req.body);
+    companyInfo.save()
+    .then(companyInfo => {
+        res.status(200).json({'companyInfo': 'Added! '});
+    })
+    .catch(err => {
+        res.status(400).send('Failed to create companyInfo!');
+    });
+});
+
 router.route('/companies/update/:id').post((req, res) =>{
+    console.log('/companies/update/:id');
     Company.findById(req.params.id, (err, company) =>{
         if(err)
         {
@@ -76,8 +104,44 @@ router.route('/companies/update/:id').post((req, res) =>{
     });
 });
 
+router.route('/companyInfo/update/:id').post((req, res) => {
+    console.log("express companyInfo UPDATE");
+    CompanyInfo.findById(req.params.id, (err, companyinfo) => {
+        if(err){
+            res.status(500).json(err);
+        }else{
+            companyinfo.UserName = req.body.UserName;
+            companyinfo.Email = req.body.Email;
+            companyinfo.FirstName = req.body.FirstName;
+            companyinfo.LastName = req.body.LastName;
+            companyinfo.Adress = req.body.Adress;
+            companyinfo.City = req.body.City;
+            companyinfo.Country = req.body.Country;
+            companyinfo.PostalCode = req.body.PostalCode;
+            
+            companyinfo.save().then(companyinfo => {
+                res.status(200).json(companyinfo);
+            })
+            .catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    });
+});
+
 router.route('/companies/delete/:id').get((req, res) => {
     Company.findByIdAndDelete({_id: req.params.id}, (err, company) => {
+        if (err)
+        {
+            res.json(err);
+        }else{
+            res.json('Removed!');
+        }
+    });
+});
+
+router.route('/companyInfo/delete/:id').get((req, res) => {
+    CompanyInfo.findByIdAndDelete({_id: req.params.id}, (err, companyInfo) => {
         if (err)
         {
             res.json(err);

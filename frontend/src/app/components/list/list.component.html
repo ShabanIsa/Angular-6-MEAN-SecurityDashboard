@@ -1,5 +1,9 @@
 <div>
+  <table class="forTheMargin">
+    <td>
       <kendo-calendar></kendo-calendar>
+    </td>
+    <td>
       <mat-card>
       <button mat-raised-button color="primary" routerLink="/create">Create New Company</button>
       <br><br>
@@ -37,7 +41,6 @@
               <button mat-button color="primary" (click)="editCompany(element._id)">Edit</button>
               <button mat-button color="warn" (click)="deleteCompany(element._id)">Delete</button>
               <button mat-button color="primary" (click)="detailsCompany(element._id)">Details</button>
-              <button mat-button color="primary" (click)="profileCompany(element._id)">Profile</button>
             </td>
         </ng-container>
 
@@ -45,4 +48,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>
     </mat-card>
+    </td>
+  </table>
 </div>

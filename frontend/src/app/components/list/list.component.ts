@@ -41,11 +41,6 @@ export class ListComponent implements OnInit {
     this.router.navigate([`/details/${id}`]);
   }
 
-  profileCompany(id){
-    console.log("profileCompany")
-    this.router.navigate([`/profile/${id}`]);
-  }
-
   deleteCompany(id) {
     this.companyService.deleteCompany(id).subscribe(() => {
       this.fetchCompanies();

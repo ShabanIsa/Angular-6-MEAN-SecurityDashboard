@@ -15,22 +15,19 @@
         <input matInput placeholder="securityIndicator1" formControlName="securityIndicator1" #securityIndicator1>
       </mat-form-field>
       <mat-form-field class="field-full-width">
-        <textarea matInput placeholder="securityIndicator2" formControlName="securityIndicator2"
-          #securityIndicator2></textarea>
+        <textarea matInput placeholder="securityIndicator2" formControlName="securityIndicator2" #securityIndicator2></textarea>
       </mat-form-field>
       <mat-form-field>
-        <mat-select placeholder="securityIndicator3" formControlName="securityIndicator3" #securityIndicator3>
-          <mat-option value="Low">Low</mat-option>
-          <mat-option value="Medium">Medium</mat-option>
-          <mat-option value="High">High</mat-option>
-        </mat-select>
+          <mat-select placeholder="securityIndicator3" formControlName="securityIndicator3" #securityIndicator3>
+            <mat-option value="Low">Low</mat-option>
+            <mat-option value="Medium">Medium</mat-option>
+            <mat-option value="High">High</mat-option>
+          </mat-select>
       </mat-form-field>
       <mat-divider></mat-divider>
       <br><br>
       <button mat-raised-button color="accent" routerLink="/list">Back</button>&nbsp;
-      <button type="submit"
-        (click)="addCompany(companyName.value, securityIndicator1.value, securityIndicator2.value, securityIndicator3.value)"
-        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+      <button type="submit" (click)="addCompany(companyName.value, securityIndicator1.value, securityIndicator2.value, securityIndicator3.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
     </form>
   </mat-card>
 </div>

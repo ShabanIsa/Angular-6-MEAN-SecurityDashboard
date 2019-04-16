@@ -22,13 +22,6 @@ export class CreateComponent implements OnInit {
       this.router.navigate(['/list']);
     });
   }
-
-  createCompanyInfo(userName, email, firstName, lastName, address, city, country, postalCode)
-  {
-    this.companyService.addCompanyInfo(userName, email, firstName, lastName, address, city, country, postalCode).subscribe(() => {
-      this.router.navigate(['/list']);
-    });
-  }
   ngOnInit() {
   }
 }

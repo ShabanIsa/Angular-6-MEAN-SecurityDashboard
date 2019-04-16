@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule, LOCALE_ID } from '@angular/core';
+import { NgModule, LOCALE_ID} from '@angular/core';
 
 import { ChartsModule } from 'ng2-charts';
 import { AppComponent } from './app.component';
@@ -14,30 +14,17 @@ import { CompanyService } from './company.service';
 import { HttpClientModule } from '@angular/common/http';
 import { GaugeChartComponent } from 'angular-gauge-chart';
 import { DetailsComponent } from './components/details/details.component';
-import {
-  MatToolbarModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatOptionModule,
-  MatSelectModule,
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatTableModule,
-  MatDividerModule,
-  MatSnackBarModule
-} from '@angular/material';
-import {
-  IgxButtonModule,
-  IgxIconModule,
-  IgxLayoutModule,
-  IgxNavigationDrawerModule,
-  IgxRadioModule,
-  IgxRippleModule,
-  IgxSwitchModule,
-  IgxToggleModule
-} from "igniteui-angular";
-import { NavdrawerComponent } from "./components/navdrawer.component/navdrawer.component.component";
+import { MatToolbarModule, 
+  MatFormFieldModule, 
+  MatInputModule, 
+  MatOptionModule, 
+  MatSelectModule, 
+  MatIconModule, 
+  MatButtonModule, 
+  MatCardModule, 
+  MatTableModule, 
+  MatDividerModule, 
+  MatSnackBarModule } from '@angular/material';
 import { GaugesModule } from '@progress/kendo-angular-gauges';
 import 'hammerjs';
 import { FormsModule } from '@angular/forms';
@@ -46,18 +33,15 @@ import { LabelModule } from '@progress/kendo-angular-label';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import '@progress/kendo-angular-intl/locales/bg/all';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-import { ProfileComponent } from './components/profile/profile.component';
-import { IndexComponent } from './components/index/index.component';
-import { IgxTabsModule } from 'igniteui-angular';
+
+
 
 const routes: Routes = [
-  { path: 'create', component: CreateComponent },
-  { path: 'edit/:id', component: EditComponent },
-  { path: 'list', component: ListComponent },
-  { path: 'details/:id', component: DetailsComponent },
-  { path: 'profile/:id', component: ProfileComponent },
-  { path: 'index', component: IndexComponent },
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
+  {path: 'create', component: CreateComponent },
+  {path: 'edit/:id', component: EditComponent },
+  {path: 'list', component: ListComponent},
+  {path: 'details/:id', component: DetailsComponent},
+  {path: '', redirectTo: 'list', pathMatch:'full'},
 ];
 
 @NgModule({
@@ -67,14 +51,11 @@ const routes: Routes = [
     CreateComponent,
     EditComponent,
     DetailsComponent,
-    GaugeChartComponent,
-    ProfileComponent,
-    IndexComponent,
-    NavdrawerComponent
+    GaugeChartComponent
   ],
   imports: [
-    FormsModule,
-    InputsModule,
+    FormsModule, 
+    InputsModule, 
     LabelModule,
     BrowserModule,
     ChartsModule,
@@ -95,15 +76,7 @@ const routes: Routes = [
     MatSnackBarModule,
     GaugesModule,
     IntlModule,
-    DateInputsModule,
-    IgxButtonModule,
-    IgxIconModule,
-    IgxLayoutModule,
-    IgxNavigationDrawerModule,
-    IgxRadioModule,
-    IgxRippleModule,
-    IgxSwitchModule,
-    IgxToggleModule
+    DateInputsModule
   ],
   providers: [CompanyService],
   bootstrap: [AppComponent]

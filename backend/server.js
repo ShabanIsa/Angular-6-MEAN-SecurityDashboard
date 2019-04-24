@@ -3,6 +3,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import Company from './models/Company';
+import User from './models/User'
 
 const app = express();
 const router = express.Router();
@@ -28,6 +29,7 @@ router.route('/companies').get((req, res) =>{
         }
     });
 });
+
 router.route('/companies/:id').get((req, res) =>{
     Company.findById(req.params.id, (err, company) =>{
         if(err)
@@ -86,6 +88,65 @@ router.route('/companies/delete/:id').get((req, res) => {
         }
     });
 });
+
+router.route('/users/:id').get((req, res) =>{
+    console.log('users:id');
+    User.findById(req.params.id, (err, user) =>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.json(user)
+        }
+    });
+});
+
+router.route('/users/add').post((req, res) =>{
+    console.log('users:add');
+    let user = new User(req.body);
+    user.save()
+    .then(user => {
+        res.status(200).json({'user': 'Added! '});
+    })
+    .catch(err => {
+        res.status(400).send('Failed to create user!');
+    });
+});
+
+router.route('/users/update/:id').post((req, res) =>{
+    User.findById(req.params.id, (err, user) =>{
+        if(err)
+        {
+            res.status(500).json(err);
+        }
+        else
+        {
+            user.userName = req.body.userName;
+            user.password = req.body.password;
+
+            user.save().then(user => {
+                res.status(200).json(user);
+            })
+            .catch(err => {
+                res.status(400).send('Update failed');
+            });
+        }
+    });
+});
+
+router.route('/users/delete/:id').get((req, res) => {
+    User.findByIdAndDelete({_id: req.params.id}, (err, user) => {
+        if (err)
+        {
+            res.json(err);
+        }else{
+            res.json('Removed!');
+        }
+    });
+});
+
 
 app.use('/', router);
 

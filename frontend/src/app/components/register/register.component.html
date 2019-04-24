@@ -1,0 +1,42 @@
+<div>
+    <section class="mat-typography">
+      <h1>Create A New Profile</h1>
+    </section>
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="User name" formControlName="userName" #userName>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="field-full-width">
+        <input type="password" matInput placeholder="Password" formControlName="password" #password>
+      </mat-form-field>
+      <br>
+      The Company you are working for:
+      <div class="sample-wrapper">
+        <igx-input-group #inputGroup [igxToggleAction]="dropDown" class="input-group">
+            <input #input class="input"  type="text" igxInput [igxDropDownItemNavigation]="dropDown"
+                readonly= "true"
+                placeholder="companies"
+                [value]="dropDown.selectedItem?.value"
+                (keydown.ArrowDown)="openDropDown()"/>
+    
+            <igx-suffix igxButton="icon" class="dropdownToggleButton" igxRipple>
+                <igx-icon>arrow_drop{{ dropDown.collapsed ? '_down' : '_up' }}</igx-icon>
+            </igx-suffix>
+        </igx-input-group>
+    
+        <span>Selected: {{ dropDown.selectedItem?.value }}</span>
+        <igx-drop-down #dropDown [width]="'160px'">
+            <igx-drop-down-item *ngFor="let item of items" [value]="item">
+                {{ item }}
+            </igx-drop-down-item>
+        </igx-drop-down>
+    </div>
+    <br>
+
+      <button mat-raised-button color="accent" routerLink="/login">Back</button>&nbsp;
+      <button type="submit" (click)="addUser(userName.value, password.value, dropDown.selectedItem?.value)"
+        [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Register</button>
+    </form>
+</div>
